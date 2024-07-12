@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Predictions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 50%;
+            margin: 100px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .predictions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .prediction {
+            flex: 1;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .prediction h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .prediction p {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .result {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .strong-buy {
+            color: green;
+            font-weight: bold;
+        }
+
+        .sell, .strong-sell {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Stock Predictions</h1>
+        <div class="predictions">
+            <div class="prediction">
+                <h2>LSTM Prediction</h2>
+                <p>{{ lstm }}</p>
+            </div>
+            <div class="prediction">
+                <h2>KNN Prediction</h2>
+                <p>{{ knn }}</p>
+            </div>
+            <div class="prediction">
+                <h2>Random Forest Prediction</h2>
+                <p>{{ rdm }}</p>
+            </div>
+        </div>
+        <div class="result">
+            {% if out %}
+                <p>
+                    The prediction result is:
+                    <span class="{% if out == 'STRONG BUY' %}STRONG BUY{% elif out == 'SELL' %}SELL{% elif out == 'STRONG SELL' %}STRONG SELL{% elif out == 'BUY' %}BUY{% endif %}">
+                        {{ out }}
+                    </span>
+                </p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
